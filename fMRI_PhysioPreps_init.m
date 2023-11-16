@@ -55,6 +55,8 @@ currentFilePath = mfilename('fullpath');
 % Change the current working directory to the directory of this m-file
 fprintf('Change the working directory to %s\n',currentDir)
 cd(currentDir);
+fprintf('Add the Main Path of fMRI_PhysioPreps (current working directory) to MATLAB Path.\n')
+addpath(currentDir);
 
 % If a dependency directory (SPM12 Main Folder) is provided, add it to the MATLAB path
 if ~isempty(SPM_Dir)

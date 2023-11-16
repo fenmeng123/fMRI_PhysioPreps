@@ -10,9 +10,11 @@ Environment: MATLAB R2022a
 
 Functional Magnetic Resonance Imaging - Physiological Preprocessing (**fMRI_PhysioPreps)** is a collection of user-defined MATLAB scripts and functions to perform physiological data preprocessing. The term "**physiological data**" used here refer to the cardiac or respiratory time-series recorded by peripheral measurement equipment (such as Siemens portable WIFI-direct device).&#x20;
 
+This free software aims to extend the scope of **PhysIO** **toolbox** and add compatibility for ECG data recorded by SIEMENS Physiological Monitoring Unit (PMU).
+
 ### Installation
 
-1.  Clone the full repository from Github and download it to you local PC.
+1.  Clone the full repository from Github and download it to you local PC. &#x20;
 
 2.  Run _fMRI_PhysioPreps_init(false);_ in your MATLAB command window. If you would like to reset your MATLAB path to default, run _fMRI_PhysioPreps_init(); ._
 
@@ -24,7 +26,7 @@ Functional Magnetic Resonance Imaging - Physiological Preprocessing (**fMRI_Phys
     >
     > \=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=
     >
-    >           This is the TAPAS PhysIO Toolbox Version R2022a-v8.1.0
+    > This is the TAPAS PhysIO Toolbox Version R2022a-v8.1.0
     >
     > \=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=
     >
@@ -46,6 +48,66 @@ Functional Magnetic Resonance Imaging - Physiological Preprocessing (**fMRI_Phys
 
 **SPM12** used here was downloaded from <https://www.fil.ion.ucl.ac.uk/spm/software/download/> to get the latest version at 2023-11-14.
 
-**PhysIO toolbox** is part of the TAPAS (<https://www.tnu.ethz.ch/en/software/tapas/documentations/physio-toolbox>). Only the **PhysIO toolbox **was included here.
+**PhysIO toolbox** is part of the TAPAS (<https://www.tnu.ethz.ch/en/software/tapas/documentations/physio-toolbox>). Only the \*\*PhysIO toolbox \*\*was included here.
 
 You can find the two open-source software under _depends_ folder.
+
+### Output Data Format
+
+As specified in your own MATLAB script (may be modified from *demo *in the open source repository), the output files in the folder directory may include: 1) a *multiple_regressor.txt *file, which contains the generated time series based on cardiac time course (made by **PhysIO toolbox**); 2) a _physio.mat_ file, contains a struct inherited from **PhysIO toolbox**; 3) a _post_physio.mat_ file, if you have run the post-processing for raw physiological data, which contains the filtered time series about cardiac response that has been aligned with fMRI acquisition time (non-filtered but aligned data were also stored in _physio.mat_).
+
+According to **PhysIO toolbox** documentation, the struct in *physio.mat *file is described as follows:
+
+> All intermediate data processing steps (e.g. filtering, cropping) of the peripheral data, including the computation of physiologically meaningful time courses, such as heart rate and respiratory volume, are saved in the substructure `ons_secs` ("onsets in seconds) of the physio-structure mentioned in question 7. This structure is typically saved in a file `physio.mat`.
+>
+> &#x20;
+>
+> `physio.ons_secs` then contains the different time courses, cropped to the acquisition window synchronized to your fMRI scan (the same values before synchronization/cropping, is found in `physio.ons_secs.raw`). Here are the most important ones:
+>
+> - `ons_secs.t` \= \[]; % time vector corresponding to c and r
+>
+> - `ons_secs.c` \= \[]; % raw cardiac waveform (ECG or PPU)
+>
+> - `ons_secs.r` \= \[]; % raw respiration amplitude time course
+>
+> - `ons_secs.cpulse` \= \[]; % onset times of cardiac pulse events (e.g. R-peaks)
+>
+> - `ons_secs.fr` \= \[]; % filtered respiration amplitude time series
+>
+> - `ons_secs.c_sample_phase` \= \[]; % phase in heart-cycle when each slice of each volume was acquired
+>
+> - `ons_secs.r_sample_phase` \= \[]; % phase in respiratory cycle when each slice of each volume was acquired
+>
+> - `ons_secs.hr` \= \[]; % \[nScans,1] estimated heart rate at each scan
+>
+> - `ons_secs.rvt` \= \[]; % \[nScans,1] estimated respiratory volume per time at each scan
+>
+> - `ons_secs.c_outliers_high` \= \[]; % onset of too long heart beats
+>
+> - `ons_secs.c_outliers_low` \= \[]; % onsets of too short heart beats
+>
+> - `ons_secs.r_hist` \= \[]; % histogram of breathing amplitudes
+
+### References
+
+1.  Notebooks from Ronald Hartley-Davies's Github Gist\*\* \*\*([Web Page](https://gist.github.com/rtrhd))
+
+2.  Source codes from open source tool _bidsphysio _([Github Repository](https://github.com/cbinyu/bidsphysio)), issue#14 ([Web Page](https://github.com/cbinyu/bidsphysio/issues/14)), and issue#201 ([Web Page]())
+
+3.  Discussion at NeuroStars forum ([Web Page](https://neurostars.org/t/bids-physio-questions-on-readthedocs-examples/26054))
+
+4.  Documentations from _PhysIO toolbox_ ([Web Page](https://www.tnu.ethz.ch/en/software/tapas/documentations/physio-toolbox)), and Read-in of files page ([Web Page](https://gitlab.ethz.ch/physio/physio-doc/-/wikis/MANUAL_PART_READIN))
+
+5.  Siemens Healthineers: _Physiologging tool_ ([Web Page](https://www.magnetomworld.siemens-healthineers.com/clinical-corner/application-tips/physiologging))
+
+6.  Source codes from _fmri-physio-log_ ([Github Repository](https://github.com/andrewrosss/fmri-physio-log))
+
+7.  HCP Wiki pages related to physiological data recorded during fMRI scanning ([Web Page](https://wiki.humanconnectome.org/display/PublicData/Understanding+Timing+Information+in+HCP+Physiological+Monitoring+Files))
+
+8.  Post from Michał Szczepanik's blog ([Web Page](https://mslw.github.io/posts/2020-12-17-working-with-siemens-physio/))
+
+9.  Documentations from CFMRI Siemens Prisma Documentation ([Web Page](https://ucsd-center-for-functional-mri-cfmri-prisma-external.readthedocs-hosted.com/en/latest/physio.html#transferring-physio-data))
+
+10. GKAguirre Lab's Wiki page ([Web Page](https://cfn.upenn.edu/aguirre/wiki/doku.php?id=public:pulse-oximetry_during_fmri_scanning ')'))
+
+11. Chirs Roden's *Physiological Artifact Removal Tool* (PART) ([Github Repository](https://github.com/neurolabusc/Part#usage))
