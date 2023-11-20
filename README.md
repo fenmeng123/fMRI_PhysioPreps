@@ -54,9 +54,9 @@ You can find the two open-source software under _depends_ folder.
 
 ### Output Data Format
 
-As specified in your own MATLAB script (may be modified from *demo *in the open source repository), the output files in the folder directory may include: 1) a *multiple_regressor.txt *file, which contains the generated time series based on cardiac time course (made by **PhysIO toolbox**); 2) a _physio.mat_ file, contains a struct inherited from **PhysIO toolbox**; 3) a _post_physio.mat_ file, if you have run the post-processing for raw physiological data, which contains the filtered time series about cardiac response that has been aligned with fMRI acquisition time (non-filtered but aligned data were also stored in _physio.mat_).
+As specified in your own MATLAB script (may be modified from **demo** in the open source repository), the output files in the folder directory may include: 1) a _multiple_regressor.txt file_, which contains the generated time series based on cardiac time course (made by **PhysIO toolbox**); 2) a _physio.mat_ file, contains a struct inherited from **PhysIO toolbox**; 3) a _post_physio.mat_ file, if you have run the post-processing for raw physiological data, which contains the filtered time series about cardiac response that has been aligned with fMRI acquisition time (non-filtered but aligned data were also stored in _physio.mat_).
 
-According to **PhysIO toolbox** documentation, the struct in *physio.mat *file is described as follows:
+According to **PhysIO toolbox** documentation, the struct in _physio.mat_ file is described as follows:
 
 > All intermediate data processing steps (e.g. filtering, cropping) of the peripheral data, including the computation of physiologically meaningful time courses, such as heart rate and respiratory volume, are saved in the substructure `ons_secs` ("onsets in seconds) of the physio-structure mentioned in question 7. This structure is typically saved in a file `physio.mat`.
 >
@@ -88,11 +88,35 @@ According to **PhysIO toolbox** documentation, the struct in *physio.mat *file i
 >
 > - `ons_secs.r_hist` \= \[]; % histogram of breathing amplitudes
 
+In _post_physio.mat_ file, the filtered ECG signal data and HRV-related metrics are stored in a MATLAB struct, see in below:
+
+`ECGsignal` - A struct containing the filtered ECG signal data that has been aligned with fMRI scanning.
+
+- `ECGsignal.filtered_c`: The filtered ECG signal data, in unit of sampling interval (in most cases, it is 2.5ms).
+
+- `ECGsignal.filtered_cpulse`: The detected R-wave peaks from filtered ECG signal, in unit of seconds.
+
+- `ECGsignal.RR_intervals`: The extract R-R intervals time course from filtered_cpulse.
+
+`HRV` - A struct containing HRV metrics calculated from the input ECG time series, including time-domain and frequency-domain features.
+
+- `HRV.time.MeanRR`: The average value of R-R intervals, indicative of the mean heart rate.
+
+- `HRV.time.SDNN`: Standard deviation of NN intervals, reflecting overall HRV and autonomic nervous system activity.
+
+- `HRV.time.RMSSD`: The root mean square of successive differences between NN intervals, associated with short-term variability and parasympathetic activity.
+
+- `HRV.freq.LowFreqPower`: Power in the low-frequency band (0.04–0.15 Hz), related to both sympathetic and parasympathetic activity.
+
+- `HRV.freq.HighFreqPower`: Power in the high-frequency band (0.15–0.4 Hz), reflecting primarily parasympathetic activity.
+
+- `HRV.freq.LFHF`: The ratio of low-frequency to high-frequency power, used to assess the balance between sympathetic and parasympathetic influences on heart rate.
+
 ### References
 
-1.  Notebooks from Ronald Hartley-Davies's Github Gist\*\* \*\*([Web Page](https://gist.github.com/rtrhd))
+1.  Notebooks from Ronald Hartley-Davies's Github Gist([Web Page](https://gist.github.com/rtrhd))
 
-2.  Source codes from open source tool _bidsphysio _([Github Repository](https://github.com/cbinyu/bidsphysio)), issue#14 ([Web Page](https://github.com/cbinyu/bidsphysio/issues/14)), and issue#201 ([Web Page]())
+2.  Source codes from open source tool \_bidsphysio \_([Github Repository](https://github.com/cbinyu/bidsphysio)), issue#14 ([Web Page](https://github.com/cbinyu/bidsphysio/issues/14)), and issue#201 ([Web Page]())
 
 3.  Discussion at NeuroStars forum ([Web Page](https://neurostars.org/t/bids-physio-questions-on-readthedocs-examples/26054))
 

@@ -52,3 +52,6 @@ HRV = s_ECG_HRVcalc(cpulse,[]);
 % LF/HF比率被用来评估交感神经和副交感神经之间的平衡。高的LF/HF比率可能指示交感神经系统活动增加，而低的比率可能指示副交感神经系统的主导。
 disp(HRV.time)
 disp(HRV.freq)
+%% Using the all-in-one workflow function to perform all post-processing
+Results = s_ECG_Postprocess(fullfile(pwd,'20231114_lixin/physio.mat'),400);
+disp(Results)

@@ -1,4 +1,4 @@
-function HRV = s_ECG_HRVcalc(R_locs, Fs)
+function [HRV,RR_intervals] = s_ECG_HRVcalc(R_locs, Fs)
 % Calculate Heart Rate Variability-related Features from ECG Signals
 % HRV calculating used the following methods:
 % 1. SDNN: Standard Deviation of NN intervals
