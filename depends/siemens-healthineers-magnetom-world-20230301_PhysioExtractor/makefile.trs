@@ -1,0 +1,24 @@
+#USE_PACKAGE (WIP_MrMake)
+
+INSTALL_FILE(physioExtractor, physioExtractor.bat, bin)
+
+#styles
+INSTALL_FILE(physioExtractor, physio_styles/Style_AcquisitionInfo.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_ECG1.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_ECG2.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_ECG3.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_ECG4.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_EXT1.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_EXT2.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_PhysioTriggertimes.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_PT_C.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_PT_R.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_PULS.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_RESP.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_VolumeAcquisitionStartTimes.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_VolumeSliceAcquisitionStartTimes.xsl, bin/physio_styles) 
+INSTALL_FILE(physioExtractor, physio_styles/Style_VolumeSliceStartTimesAndPhysio.xsl, bin/physio_styles) 
+
+IF_WIN64(CSSOURCES(physioExtractor))
+
+IF_WIN64(CSPROCESS(physioExtractor))

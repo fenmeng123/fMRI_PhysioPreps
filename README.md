@@ -42,7 +42,7 @@ This free software aims to extend the scope of **PhysIO** **toolbox** and add co
     >
     > Finished!
 
-### Dependencies
+### Dependencies and License
 
 **fMRI_PhysioPreps** depends on the **PhysIO toolbox** and **SPM12**. Both of them are free software under the GNU GPL license (v2 or v3). Therefore, **fMRI_PhysioPreps** is also licensed by GNU GPL v3 to follow their licenses . See full text in _LICENSE_ file.
 
@@ -96,7 +96,7 @@ In _post_physio.mat_ file, the filtered ECG signal data and HRV-related metrics 
 
 - `ECGsignal.filtered_cpulse`: The detected R-wave peaks from filtered ECG signal, in unit of seconds.
 
-- `ECGsignal.RR_intervals`: The extract R-R intervals time course from filtered_cpulse.
+- `ECGsignal.RR_intervals`: The extract R-R intervals time course from `ECGsignal.filtered_cpulse`.
 
 `HRV` - A struct containing HRV metrics calculated from the input ECG time series, including time-domain and frequency-domain features.
 
