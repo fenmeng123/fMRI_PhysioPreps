@@ -18,9 +18,7 @@ function [data_table,T_ECG_Channels] = s_tapas_physio_siemens_line2table(lineDat
 %
 % EXAMPLE
 %   tapas_physio_siemens_line2table
-%
-%   See also
-
+% 
 % Author: Lars Kasper
 % Created: 2016-02-29
 % Copyright (C) 2016 TNU, Institute for Biomedical Engineering,

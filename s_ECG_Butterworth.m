@@ -69,6 +69,7 @@ end
 end
 
 function p = s_ECGfilter_ParseInput(ecg_signal, Fs, varargin)
+% Parse the input of s_ECG_Butterworth
 p = inputParser;
 ValidateFilterBandInput = @(x)isvector(x) && @(x)(length(x)==2);
 addRequired(p,'ecg_signal',@(x)isvector(x));

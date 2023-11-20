@@ -151,6 +151,7 @@ matlabbatch{1}.spm.tools.physio.verbose.use_tabs = true;
 end
 
 function p = s_PhysIO_ParseInput(OutputDir,CardiacECGDir,ScansDICOMDir,varargin)
+% Parse the input arguments for s_Physio_Batch_Job
 p = inputParser;
 addRequired(p,'OutputDir',@(x)ischar(x)||isstring(x));
 if ~exist(OutputDir,"dir")
@@ -171,7 +172,7 @@ parse(p,OutputDir,CardiacECGDir,ScansDICOMDir,varargin{:});
 end
 
 function DirCellstr = s_ConevrtDirVariable2Cellstr(DirVariable)
-
+% Convert character and string into a cell string.
 if ischar(DirVariable)
     DirCellstr = {DirVariable};
 elseif isstring(DirVariable)

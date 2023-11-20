@@ -2,9 +2,9 @@ function fMRI_PhysioPreps_init(ResetPath,SPM_Dir,PhysIO_Dir)
 % Automatically initializing the fMRI_PhysioPreps (Add all required paths)
 %
 % Input:
-%   Required:
+%   Positional Arguments (Required):
 %       None
-%   Optional:
+%   Positional Arguments (Optional):
 %       ResetPath   - a logical flag, control whether to reset your MATLAB
 %                   path to the default settings when you first installed
 %                   your matlab. Default is true.

@@ -1,5 +1,6 @@
 function [R_locs, HRV] = s_ECG_ExtractRwave(ecg_signal, Fs)
-% Get the location of R-wave peaks in ECG signal
+% Get the location of R-wave peaks in ECG signal using MATLAB built-in
+% findpeaks function.
 % 
 % Input:
 %   Positional Argumentions:
@@ -8,6 +9,7 @@ function [R_locs, HRV] = s_ECG_ExtractRwave(ecg_signal, Fs)
 %       is 400 Hz.
 % Output:
 %   R_locs - the detected R-wave peaks, which are aligned 
+% 
 % Written By Kunru Song 2023.11.20
 
 if nargin == 1

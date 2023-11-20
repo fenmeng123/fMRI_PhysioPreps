@@ -1,6 +1,16 @@
 function [T_ParsedHeaders,T_HeadersIdx,LogHeader] = s_parse_siemens_ECG_Extract_Headers(lineData)
 % Parse the first line data in the input ECG file.
-%
+% 
+% Input:
+%   Positional Arguments (Required):
+%       lineData - a char variable contains the first line data from a
+%                   Siemens PMU ECG file, which can be extracted by 
+%                   'tapas_physio_read_physlogfiles_siemens_raw'.
+% Output:
+%   T_ParseHeaders - a table contains the parsed headers with trace data.
+%   T_HeadersIdx - a table contains the string location index of headers.
+%   LogHeader - a table contains the main header of a ECG file.
+% 
 % By Kunru Song 2023.11.6
 
 
@@ -68,10 +78,3 @@ end
 T_ParsedHeaders.MSGTYPE = MSGTYPE_values;
 T_ParsedHeaders = movevars(T_ParsedHeaders,'MSGTYPE','Before','TraceData');
 T_ParsedHeaders = removevars(T_ParsedHeaders,{'IdxEnd','IdxStart'});
-
-
-
-
-
-% 
-

@@ -41,7 +41,7 @@ function [c, r, t, cpulse, verbose] = ...
 %       tapas_physio_read_physlogfiles_siemens(logfile, vendor, cardiac_modality);
 %
 %   See also tapas_physio_main_create_regressors
-
+% 
 % Author: Lars Kasper
 %         file structure information from PhLeM Toolbox, T. Verstynen (November 2007);
 %                and Deshpande and J. Grinstead, Siemens Medical Solutions (March 2009)
@@ -54,6 +54,8 @@ function [c, r, t, cpulse, verbose] = ...
 % Licence (GPL), version 3. You can redistribute it and/or modify it under the terms of the GPL
 % (either version 3 or, at your option, any later version). For further details, see the file
 % COPYING or <http://www.gnu.org/licenses/>.
+% 
+% Modified By Kunru Song 2023.11.16
 
 %% read out values
 

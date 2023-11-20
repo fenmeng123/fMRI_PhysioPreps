@@ -1,3 +1,9 @@
+% Demo script for mannully perform ECG signal filtering and QRS detection
+% Also show how to use post-process workflow function 's_ECG_Postprocess'
+% 
+% Kunru Song 2023.11.20
+
+
 %% Apply Butterworth filter on ECG signal data
 load 20231114_lixin\physio.mat
 
